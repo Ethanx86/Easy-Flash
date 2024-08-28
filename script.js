@@ -40,9 +40,41 @@ submit.addEventListener('click', () => {
     }
     config.style.display = 'none';
     test.style.display = 'inline-block';
-    activate();
+    question();
 });
 // The REAL meat of the program -- actually doing the flashcard app.
-function activate(){
-    // Start by getting a
+var answer;
+function question(){
+    // Start by getting a random question
+    const questionNumber = Math.round(Math.random() * (buttons - 1));
+    const question = Object.keys(flashcards)[questionNumber];
+    answer = Object.values(flashcards)[questionNumber];
+    // Display question
+    const questionDisplay = document.getElementById('Question');
+    questionDisplay.innerHTML = question;
 }
+// And finally -- handle the answer
+const guessInput = document.getElementById('Answer');
+var showingAnswer = false;
+guessInput.addEventListener('keypress', (event) => {
+    if(showingAnswer) {
+        guessInput.value = '';
+    }
+    if(event.code === 'Enter') {
+        // Handle a submitted answer
+        const error = document.getElementById('error');
+        const guess = guessInput.value;
+        if(guess == answer){
+            question();
+            const audio = new Audio('correct.mp3');
+            audio.play();
+        } else {
+            showingAnswer = true;
+            error.innerHTML = `Incorrect! The answer is ${answer}`;
+            setTimeout(() => {
+                showingAnswer = false;
+                error.innerHTML = '';
+            }, 3000);
+        }
+    }
+});
