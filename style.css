@@ -1,0 +1,21 @@
+input {
+    border-radius: 0;
+    border-style: solid;
+    border-color: white;
+    background-color: #313131;
+    color: #6b6b6b;
+}
+
+body {
+    background-color: #313131;
+}
+
+button {
+    background-color: #ff4242;
+    color: #e0e0e0;
+    border-color: white;
+    border-style: solid;
+    font-size: 25px;
+    border-width: 3px;
+    height: 30px;
+}
