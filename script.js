@@ -46,8 +46,8 @@ submit.addEventListener('click', () => {
 var answer;
 function question(){
     // Start by getting a random question
-    const questionNumber = Math.round(Math.random() * (buttons - 1));
-    const question = Object.keys(flashcards)[questionNumber];
+    var questionNumber = Math.round(Math.random() * (buttons - 1));
+    var question = Object.keys(flashcards)[questionNumber];
     answer = Object.values(flashcards)[questionNumber];
     // Display question
     const questionDisplay = document.getElementById('Question');
